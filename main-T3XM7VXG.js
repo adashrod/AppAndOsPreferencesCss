@@ -16,9 +16,10 @@ function setReducedMotionPreference(reducedMotionPreference: string): void {
     animation-name: slider;
     /* Use tokens and get whatever values they currently have; components
      * don't need to know about settings that determine behavior */
-    animation-duration: --anim-duration-long;
-    animation-iteration-count: --anim-iteration-count-infinite;
-}`;var wi=(()=>{class e{constructor(){this.jsWiring=`let uiPrefReducedMotion;
+    animation-duration: var(--anim-duration-long);
+    animation-iteration-count: var(--anim-iteration-count-infinite);
+}`;var wi=(()=>{class e{constructor(){this.jsWiring=`
+let uiPrefReducedMotion;
 
 // fired when user selects preference in application UI
 // reducedMotionPreference: "animate" | "reduce" | "system"
@@ -64,7 +65,8 @@ function isMotionReducedByOs(): boolean | null {
     }
 
     return null;
-}`,this.cssWiring=`/* "animate" and "reduce" classes are added to <body> by JS.
+}`,this.cssWiring=`
+/* "animate" and "reduce" classes are added to <body> by JS.
  * There is no "system" class because that setting is only used in code to determine whether to use "animate" or "reduce".
  */
 
@@ -122,7 +124,8 @@ main {
         }
     }
 }`,this.cssUsage=$e,this.pros=["Calculation of effective value is in CSS, close to the implementation"],this.cons=["Might not be supported in all browsers yet","Rules are duplicated because of media query nested in a container style query"]}static{this.\u0275fac=function(n){return new(n||e)}}static{this.\u0275cmp=E({type:e,selectors:[["app-strategy2-container-style"]],decls:25,vars:7,consts:[[3,"feature"],[1,"demo-container"],["label","box"],[1,"sliding-box"],[3,"highlightAuto"],[3,"pros","cons"]],template:function(n,i){n&1&&(d(0,"h2"),u(1,"Strategy 2 (container style queries only)"),h(),w(2,"app-browser-support-notice",0),d(3,"p"),u(4,` This strategy uses a container style query with a custom property and a media query to determine the user's preferred reduced motion setting.
-`),h(),d(5,"p"),u(6,"Try changing the app preference in #2 above, and the reduced motion setting in your operating system (accessibility preferences) to see changes."),h(),d(7,"div",1)(8,"app-animation-container"),w(9,"app-color-legend"),h(),d(10,"app-animation-container",2),Re(11,wa,1,0,"div",3),h()(),d(12,"p"),u(13,"JavaScript Wiring:"),h(),d(14,"pre"),w(15,"code",4),h(),d(16,"p"),u(17,"CSS Wiring:"),h(),d(18,"pre"),w(19,"code",4),h(),d(20,"p"),u(21,"Example CSS:"),h(),d(22,"pre"),w(23,"code",4),h(),w(24,"app-pros-and-cons",5)),n&2&&(S(2),_("feature",i.Feature.CONTAINER_STYLE_CUSTOM_PROPERTIES),S(9),we(i.supportsContainerStyleQueriesWithCustomProperties()?11:-1),S(4),_("highlightAuto",i.jsWiring),S(4),_("highlightAuto",i.cssWiring),S(4),_("highlightAuto",i.cssUsage),S(),_("pros",i.pros)("cons",i.cons))},dependencies:[Le,Yt,ke,je,yt],styles:[".demo-container[_ngcontent-%COMP%]{display:flex;flex-direction:row;gap:1rem}@media(orientation:portrait){.demo-container[_ngcontent-%COMP%]{flex-direction:column}}@keyframes _ngcontent-%COMP%_slide{0%{transform:translate(0)}50%{transform:translate(200px)}to{transform:translate(0)}}.sliding-box[_ngcontent-%COMP%]:before{display:block;content:var(--strategy1-content);align-content:center;text-align:center;width:100px;height:100px;color:#fff;font-weight:700;background-color:var(--strategy2-anim-color-indicator);animation-name:_ngcontent-%COMP%_slide;animation-duration:var(--strategy2-anim-dur-long);animation-timing-function:ease-in-out;animation-iteration-count:var(--strategy2-anim-iteration-count-infinite)}"]})}}return e})();var Ii=(()=>{class e{constructor(){this.Feature=ve,this.jsWiring=Gt,this.cssWiring=`/* use the global class to create the custom property */
+`),h(),d(5,"p"),u(6,"Try changing the app preference in #2 above, and the reduced motion setting in your operating system (accessibility preferences) to see changes."),h(),d(7,"div",1)(8,"app-animation-container"),w(9,"app-color-legend"),h(),d(10,"app-animation-container",2),Re(11,wa,1,0,"div",3),h()(),d(12,"p"),u(13,"JavaScript Wiring:"),h(),d(14,"pre"),w(15,"code",4),h(),d(16,"p"),u(17,"CSS Wiring:"),h(),d(18,"pre"),w(19,"code",4),h(),d(20,"p"),u(21,"Example CSS:"),h(),d(22,"pre"),w(23,"code",4),h(),w(24,"app-pros-and-cons",5)),n&2&&(S(2),_("feature",i.Feature.CONTAINER_STYLE_CUSTOM_PROPERTIES),S(9),we(i.supportsContainerStyleQueriesWithCustomProperties()?11:-1),S(4),_("highlightAuto",i.jsWiring),S(4),_("highlightAuto",i.cssWiring),S(4),_("highlightAuto",i.cssUsage),S(),_("pros",i.pros)("cons",i.cons))},dependencies:[Le,Yt,ke,je,yt],styles:[".demo-container[_ngcontent-%COMP%]{display:flex;flex-direction:row;gap:1rem}@media(orientation:portrait){.demo-container[_ngcontent-%COMP%]{flex-direction:column}}@keyframes _ngcontent-%COMP%_slide{0%{transform:translate(0)}50%{transform:translate(200px)}to{transform:translate(0)}}.sliding-box[_ngcontent-%COMP%]:before{display:block;content:var(--strategy1-content);align-content:center;text-align:center;width:100px;height:100px;color:#fff;font-weight:700;background-color:var(--strategy2-anim-color-indicator);animation-name:_ngcontent-%COMP%_slide;animation-duration:var(--strategy2-anim-dur-long);animation-timing-function:ease-in-out;animation-iteration-count:var(--strategy2-anim-iteration-count-infinite)}"]})}}return e})();var Ii=(()=>{class e{constructor(){this.Feature=ve,this.jsWiring=Gt,this.cssWiring=`
+/* use the global class to create the custom property */
 body.reduce { --app-preference: reduce; }
 body.animate { --app-preference: animate; }
 body.system { --app-preference: system; }
@@ -140,7 +143,8 @@ body {
             (style(--app-preference: system) and media(prefers-reduced-motion: reduce)): 1;
         else: infinite;
     );
-}`,this.cssFuture=`/* THE FOLLOWING IS NOT POSSIBLE, but could be once @custom-media is widely supported, if custom media supports style queries.
+}`,this.cssFuture=`
+/* THE FOLLOWING IS NOT POSSIBLE, but could be once @custom-media is widely supported, if custom media supports style queries.
  * If supported, this would make strategy 3 using CSS if() very concise. Fingers crossed \u{1F91E} that this will be possible someday.
  */
 @custom-media --custom-reduced style(--app-preference: reduce) or
